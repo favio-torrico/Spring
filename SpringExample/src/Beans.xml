@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+   default-init-method = "init"
+   default-destroy-method = "destroy">
+   <!--- Definimos default-init-method en el padre(beans) para evitar ponerlo en los hijos(bean)
+   	Ejemplo de como ponerlo en bean
+   	<bean id = "helloWorld" class = "com.tutorialspoint.HelloWorld" scope = "singleton" init-method = "init" 
+      destroy-method = "destroy"> 
+      -->
+   <bean id = "helloWorld" class = "com.tutorialspoint.HelloWorld" scope = "singleton" >
+     
+      <property name = "message" value = "Hello World1!"/>
+   </bean>
+   <bean id = "helloWorld2" class = "com.tutorialspoint.HelloWorld" scope = "prototype" >
+      <property name = "message" value = "Hello World!2"/>
+   </bean>
+   <!-- Definimos el postProcesor para este XML, me enlaza con InitHelloWorld-->
+   <bean class = "com.tutorialspoint.InitHelloWorld" />
+</beans>
